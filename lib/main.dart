@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'My Portfolio',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 85, 13, 210)),
+            seedColor: Color.fromARGB(255, 82, 57, 27)),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
@@ -28,8 +28,8 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('My Portfolio'),
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text('My Portfolio', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary ),),
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: SingleChildScrollView(
             child: Column(
@@ -39,34 +39,6 @@ class MyHomePage extends StatelessWidget {
             BlogItem(
               blogTitle: "Blog Pertama",
               blogDescription: "Ini adalah blog pertama saya",
-            ),
-            BlogItem(
-              blogTitle: "Blog Kedua",
-              blogDescription: "Ini adalah blog kedua saya",
-            ),
-            BlogItem(
-              blogTitle: "Blog Kedua",
-              blogDescription: "Ini adalah blog kedua saya",
-            ),
-            BlogItem(
-              blogTitle: "Blog Kedua",
-              blogDescription: "Ini adalah blog kedua saya",
-            ),
-            BlogItem(
-              blogTitle: "Blog Kedua",
-              blogDescription: "Ini adalah blog kedua saya",
-            ),
-            BlogItem(
-              blogTitle: "Blog Kedua",
-              blogDescription: "Ini adalah blog kedua saya",
-            ),
-            BlogItem(
-              blogTitle: "Blog Kedua",
-              blogDescription: "Ini adalah blog kedua saya",
-            ),
-            BlogItem(
-              blogTitle: "Blog Kedua",
-              blogDescription: "Ini adalah blog kedua saya",
             ),
             BlogItem(
               blogTitle: "Blog Kedua",
@@ -120,35 +92,54 @@ class BlogItem extends StatelessWidget {
                   flex: 1,
                   child: const Image(
                     image: AssetImage('images/gambar1.jpg'),
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(blogTitle, 
-                    style: TextStyle(
-                      fontSize: 18, 
-                      fontWeight: FontWeight.bold
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Text(blogDescription),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        ElevatedButton(onPressed: null, child: Text("Order Now")),
-                        OutlinedButton(onPressed: null, child: Text("Chat Admin"))
-                      ],
-                    )
-                  ],
-                )
-                  )
-                  ),
+                    flex: 2,
+                    child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              blogTitle,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 5),
+                            Text(blogDescription),
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                ElevatedButton(
+                                    onPressed: null,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            10), 
+                                      ),
+                                      
+                                    ),
+                                    child: Text("Order Now")),
+                                    SizedBox(width: 5),
+                                OutlinedButton(
+                                    onPressed: null,
+                                    style: OutlinedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            10), 
+                                            
+                                      ),
+                                      
+                                    ),
+                                    child: Text("Chat Admin"))
+                              ],
+                            )
+                          ],
+                        ))),
               ],
             )),
       ),
